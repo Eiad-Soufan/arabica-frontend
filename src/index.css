@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* مكان تثبيت الخطوط (إن توفّرت ملفاتها عندك) */
+@font-face {
+  font-family: "Sukar";
+  src: url("/fonts/SukarRegular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sukar";
+  src: url("/fonts/SukarBold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sukar";
+  src: url("/fonts/SukarBlack.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Co Text Arabic";
+  src: url("/fonts/CoTextArabic-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Co Text Arabic";
+  src: url("/fonts/CoTextArabic-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root{
+  --arabica-brown: 77 31 3;   /* :contentReference[oaicite:6]{index=6} */
+  --arabica-deep: 42 12 6;    /* :contentReference[oaicite:7]{index=7} */
+  --arabica-aqua: 79 186 179; /* :contentReference[oaicite:8]{index=8} */
+}
+
+/* أساسيات عامة */
+html, body, #root {
+  height: 100%;
+  
+}
+body {
+  margin: 0;
+  font-family: "Co Text Arabic", system-ui, sans-serif;
+  background: rgb(var(--arabica-deep));
+  color: white;
+}
+
+@keyframes arabica-marquee-ltr {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes arabica-marquee-rtl {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .arabica-marquee {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+
+@keyframes shine {
+  0% { transform: translateX(-30%); }
+  100% { transform: translateX(220%); }
+}
+
+@keyframes arabica-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.arabica-marquee {
+  overflow: hidden;
+}
+
+.arabica-marquee-move {
+  display: flex;
+  width: max-content;
+  animation: arabica-marquee 26s linear infinite;
+  will-change: transform;
+}
+
+/* كل Track لازم يكون auto width وما يضغط */
+.arabica-marquee-track {
+  display: flex;
+  width: max-content;
+  flex: 0 0 auto;
+}
+
+/* لا تستخدم gap هون لأنه بيظهر فاصل عند اللوب */
+.arabica-marquee-move,
+.arabica-marquee-track {
+  gap: 0;
+}
+
+/* وقف عند hover */
+.arabica-marquee:hover .arabica-marquee-move {
+  animation-play-state: paused;
+}
+
+/* RTL: اعكس اتجاه الحركة */
+html[dir="rtl"] .arabica-marquee-move {
+  animation-direction: reverse;
+}

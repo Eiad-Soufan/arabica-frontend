@@ -1,0 +1,130 @@
+{
+  "brand": "Arabica",
+  "nav": { "menu": "Menu", "promotions": "Promotions", "gallery": "Gallery", "contact": "Contact" },
+  "hero": { "description": "A modern Arabic dining experience blending authentic flavors, refined ambiance, and a menu that feels like home.","badge": "Arabic Restaurant • Premium Experience", "title": "Taste the Authentic Arabica.", "cta1": "Explore Menu", "cta2": "View Promotions" },
+  "about": {
+    "title": "About Us",
+    "headline": "Authentic Arabic cuisine with a modern soul",
+    "text": "At Arabica, we believe that food is a complete experience. We carefully select our ingredients and prepare our dishes using authentic Arabic recipes, enhanced with a modern touch. Our goal is to offer flavors that feel familiar, an atmosphere that feels welcoming, and service that leaves a lasting impression."
+  },
+
+"testimonials": {
+  "title": "Customer Reviews",
+  "headline": "Real Experiences",
+  "text": "We value your trust in every visit."
+}
+,
+
+  "why": {
+  "title": "Why Choose Us",
+  "headline": "Quality Makes the Difference",
+  "text": "We deliver a dining experience that blends authentic flavors, high quality, and outstanding service.",
+    "items": [
+      { "title": "Authentic Arabic Recipes", "text": "Balanced flavors crafted with selected ingredients." },
+      { "title": "Consistent Daily Quality", "text": "Reliable standards in preparation and presentation." },
+      { "title": "Refined, Cozy Ambiance", "text": "Elegant design with a welcoming atmosphere." },
+      { "title": "Fast, Friendly Service", "text": "A team that cares about details and smooth service." }
+    ]
+  },
+"values": {
+  "title": "Our Values",
+  "headline": "The Foundation of What We Do",
+  "text": "We are committed to quality, integrity, and attention to detail to deliver an experience worthy of your trust."
+},
+"stories": {
+  "title": "Arabica Stories",
+  "headline": "From the Heart of the Kitchen",
+  "text": "Short behind-the-scenes moments—flavor, hospitality, and stories from our kitchen."
+},
+
+  "menu": {
+    "badge": "Menu • Categories & Dishes",
+    "title": "Our Menu",
+    "subtitle": "Browse by category, discover recommended dishes, and explore our latest banners.",
+
+    "bannersTitle": "Banners",
+    "bannersSubtitle": "Highlights & quick offers from the kitchen.",
+    "noBanners": "No banners available right now.",
+
+    "recommendedTitle": "Recommended Meals",
+    "recommendedSubtitle": "Our favorites — curated for you.",
+    "noRecommended": "No recommended items yet.",
+    "recommended": "Recommended",
+
+    "productsTitle": "Products",
+    "all": "All",
+    "showingAll": "Showing all products.",
+    "showingCategory": "Showing: {{name}}",
+
+    "noProducts": "No products in this section yet.",
+    "noDescription": "No description.",
+    "tapForDetails": "Tap for details",
+    "categoryId": "Category",
+
+    "prev": "Prev",
+    "next": "Next",
+
+    "errors": {
+      "loadTop": "Failed to load banners / recommended / categories.",
+      "loadProducts": "Failed to load products."
+    }
+  },
+  "close": "Close",
+  "footer": {
+  "tagline": "Restaurant",
+  "description": "Premium Arabic dining with a modern touch and consistent quality—every time.",
+  "badge1": "Selected Ingredients",
+  "badge2": "Authentic Flavors",
+  "badge3": "Great Service",
+  "quickLinks": "Quick Links",
+  "contact": "Contact",
+  "location": "Location",
+  "locationValue": "Malaysia • Kuala Lumpur",
+  "hours": "Hours",
+  "hoursValue": "open daily from 10:00 AM to 2:00 AM, with the last order at 1:30 AM",
+  "email": "Email",
+  "ctaLabel": "Ready for Arabica?",
+  "ctaTitle": "Explore the menu now",
+  "ctaButton": "Go to Menu",
+  "noteLabel": "Note",
+  "noteText": "We’re here to serve warmth, flavor, and memorable moments.",
+  "rights": "All rights reserved.",
+  "privacy": "Privacy",
+  "terms": "Terms"
+},
+  "promotions": {
+    "title": "Promotions",
+    "subtitle": "Fresh deals and featured banners.",
+    "empty": "No promotions available right now.",
+    "cta": "Open",
+    "view": "View"
+  },
+    "gallery": {
+    "title": "Gallery",
+    "subtitle": "Photos and videos from our store.",
+    "videos": "Videos",
+    "images": "Images",
+    "video": "Video",
+    "open": "Open link",
+    "noVideos": "No videos right now.",
+    "noImages": "No images right now.",
+    "empty": "No gallery content yet."
+  },
+    "contact": {
+    "title": "Contact Us",
+    "subtitle": "We’re here to help — reach us anytime.",
+    "social": "Social Media",
+    "hours": "Working Hours",
+    "everyday": "Everyday",
+    "open": "Open",
+    "fromTo": "From — To",
+    "lastOrder": "Last Order",
+    "reachUs": "Get in Touch",
+    "email": "E-mail",
+    "management": "Management & Catering",
+    "restaurant": "Restaurant (Orders – Reservations)",
+    "note": "Tip: Tap a number to call."
+  }
+
+
+}

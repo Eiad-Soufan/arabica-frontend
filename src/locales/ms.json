@@ -1,0 +1,126 @@
+{
+  "brand": "Arabica",
+  "nav": { "menu": "Menu", "promotions": "Promosi", "gallery": "Galeri", "contact": "Hubungi" },
+  "hero": { "description": "Pengalaman menjamu selera Arab moden yang menggabungkan rasa autentik, suasana elegan, dan menu yang terasa seperti di rumah.","badge": "Restoran Arab • Pengalaman Premium", "title": "Rasai Keaslian Arabica.", "cta1": "Lihat Menu", "cta2": "Lihat Promosi" },
+    "about": {
+    "title": "Tentang Kami",
+    "headline": "Masakan Arab asli dengan sentuhan moden",
+    "text": "Di Arabica, kami percaya bahawa makanan adalah satu pengalaman yang menyeluruh. Kami memilih bahan dengan teliti dan menyediakan hidangan berdasarkan resipi Arab asli, diperkaya dengan sentuhan moden. Matlamat kami adalah untuk menyajikan rasa yang mesra, suasana yang selesa, dan perkhidmatan yang meninggalkan kesan indah."
+  },
+"testimonials": {
+  "title": "Ulasan Pelanggan",
+  "headline": "Pengalaman Sebenar",
+  "text": "Kami menghargai kepercayaan anda dalam setiap kunjungan."
+},
+"values": {
+  "title": "Nilai Kami",
+  "headline": "Asas Apa yang Kami Tawarkan",
+  "text": "Kami komited terhadap kualiti, kejujuran, dan perhatian terhadap perincian untuk memberikan pengalaman yang layak dengan kepercayaan anda."
+},
+    "why": {
+  "title": "Mengapa Memilih Kami",
+  "headline": "Kualiti Membuat Perbezaan",
+  "text": "Kami menawarkan pengalaman menjamu selera yang menggabungkan rasa asli, kualiti tinggi, dan perkhidmatan terbaik.",
+    "items": [
+      { "title": "Resipi Arab Autentik", "text": "Rasa seimbang disediakan dengan bahan terpilih." },
+      { "title": "Kualiti Konsisten Harian", "text": "Standard yang konsisten dalam penyediaan dan hidangan." },
+      { "title": "Suasana Elegan & Selesa", "text": "Reka bentuk kemas dengan suasana yang mesra." },
+      { "title": "Servis Pantas & Mesra", "text": "Pasukan yang teliti dan servis yang lancar." }
+    ]
+  },
+"stories": {
+  "title": "Kisah Arabica",
+  "headline": "Dari Hati Dapur Kami",
+  "text": "Detik-detik singkat di sebalik tabir—rasa, layanan, dan kisah dari dapur kami."
+},
+  "menu": {
+    "badge": "Menu • Kategori & Hidangan",
+    "title": "Menu Kami",
+    "subtitle": "Lihat mengikut kategori, temui hidangan disyorkan, dan ikuti banner terkini.",
+
+    "bannersTitle": "Banner",
+    "bannersSubtitle": "Sorotan & tawaran pantas dari dapur.",
+    "noBanners": "Tiada banner buat masa ini.",
+
+    "recommendedTitle": "Hidangan Disyorkan",
+    "recommendedSubtitle": "Pilihan kami — dikurasi untuk anda.",
+    "noRecommended": "Belum ada item disyorkan.",
+    "recommended": "Disyorkan",
+
+    "productsTitle": "Produk",
+    "all": "Semua",
+    "showingAll": "Memaparkan semua produk.",
+    "showingCategory": "Memaparkan: {{name}}",
+
+    "noProducts": "Tiada produk dalam bahagian ini buat masa ini.",
+    "noDescription": "Tiada penerangan.",
+    "tapForDetails": "Tekan untuk butiran",
+    "categoryId": "Kategori",
+
+    "prev": "Sebelum",
+    "next": "Seterusnya",
+
+    "errors": {
+      "loadTop": "Gagal memuatkan banner / disyorkan / kategori.",
+      "loadProducts": "Gagal memuatkan produk."
+    }
+  },
+   "close": "Tutup",
+  "footer": {
+  "tagline": "Restoran",
+  "description": "Hidangan Arab premium dengan sentuhan moden dan kualiti yang konsisten setiap masa.",
+  "badge1": "Bahan Terpilih",
+  "badge2": "Perisa Asli",
+  "badge3": "Perkhidmatan Cemerlang",
+  "quickLinks": "Pautan Pantas",
+  "contact": "Hubungi Kami",
+  "location": "Lokasi",
+  "locationValue": "Malaysia • Kuala Lumpur",
+  "hours": "Waktu Operasi",
+  "hoursValue": "Dibuka setiap hari dari jam 10:00 pagi hingga 2:00 pagi. Pesanan terakhir pada jam 1:30 pagi.",
+  "email": "Emel",
+  "ctaLabel": "Sedia untuk Arabica?",
+  "ctaTitle": "Terokai menu sekarang",
+  "ctaButton": "Lihat Menu",
+  "noteLabel": "Nota",
+  "noteText": "Kami di sini untuk menyajikan kehangatan, rasa yang istimewa, dan pengalaman yang tidak dilupakan.",
+  "rights": "Hak cipta terpelihara.",
+  "privacy": "Privasi",
+  "terms": "Terma"
+},
+  "promotions": {
+    "title": "Promosi",
+    "subtitle": "Promosi terkini dan banner pilihan.",
+    "empty": "Tiada promosi buat masa ini.",
+    "cta": "Buka",
+    "view": "Lihat"
+  },
+    "gallery": {
+    "title": "Galeri",
+    "subtitle": "Gambar dan video dari kedai kami.",
+    "videos": "Video",
+    "images": "Gambar",
+    "video": "Video",
+    "open": "Buka pautan",
+    "noVideos": "Tiada video buat masa ini.",
+    "noImages": "Tiada gambar buat masa ini.",
+    "empty": "Tiada kandungan galeri lagi."
+  },
+    "contact": {
+    "title": "Hubungi Kami",
+    "subtitle": "Kami sedia membantu — hubungi kami bila-bila masa.",
+    "social": "Media Sosial",
+    "hours": "Waktu Operasi",
+    "everyday": "Setiap hari",
+    "open": "Buka",
+    "fromTo": "Dari — Hingga",
+    "lastOrder": "Pesanan Terakhir",
+    "reachUs": "Maklumat Hubungan",
+    "email": "E-mel",
+    "management": "Pengurusan & Katering",
+    "restaurant": "Restoran (Pesanan – Tempahan)",
+    "note": "Tip: Klik nombor untuk menelefon."
+  }
+
+
+}
