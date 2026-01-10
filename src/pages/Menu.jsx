@@ -221,7 +221,7 @@ export default function Menu() {
                     ) : banners.length ? (
                         <div className="relative">
                             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-glass">
-                                <div className="relative w-full h-[220px] sm:h-[340px] lg:h-[480px]">
+                                <div className="relative w-full aspect-[21/9] sm:aspect-[21/9] lg:aspect-[21/9]">
                                     <AnimatePresence initial={false} custom={bannerDir} mode="wait">
                                         <motion.a
                                             key={banners[bannerIndex]?.id}
@@ -788,5 +788,6 @@ function ProductSkeletonGrid() {
         </div>
     );
 }
+
 
 
