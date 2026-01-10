@@ -274,7 +274,7 @@ export default function Menu() {
                                     <button
                                         type="button"
                                         onClick={goPrevBanner}
-                                        className="absolute top-1/2 -translate-y-1/2 rounded-full bg-black/40 px-3 py-2 text-xl ring-1 ring-white/20 hover:bg-black/55 backdrop-blur-glass shadow-glass"
+                                        className="absolute top-[45%] -translate-y-1/2 rounded-full bg-black/40 px-3 py-2 text-xl ring-1 ring-white/20 hover:bg-black/55 backdrop-blur-glass shadow-glass"
                                         aria-label="Previous banner"
                                     >
                                         ‹
@@ -788,3 +788,4 @@ function ProductSkeletonGrid() {
         </div>
     );
 }
+
