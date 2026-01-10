@@ -92,13 +92,13 @@ export default function Menu() {
         });
     }, [banners.length]);
 
-    // Autoplay every 2 seconds
+    // Autoplay (slower): every 4.5 seconds
     useEffect(() => {
         if (!banners.length) return;
         const id = setInterval(() => {
             setBannerDir(1);
             setBannerIndex((i) => (i + 1) % banners.length);
-        }, 2000);
+        }, 4500);
 
         return () => clearInterval(id);
     }, [banners.length]);
@@ -126,7 +126,8 @@ export default function Menu() {
 
                 if (!alive) return;
                 setCategories(Array.isArray(cats) ? cats : []);
-                setBanners(Array.isArray(smallBanners) ? smallBanners.slice(0, 4) : []);
+                // ✅ no slice(0,4): bring ALL banners from backend
+                setBanners(Array.isArray(smallBanners) ? smallBanners : []);
                 setRecommended(Array.isArray(rec) ? rec : []);
             } catch (e) {
                 if (!alive) return;
@@ -213,106 +214,126 @@ export default function Menu() {
                     </div>
                 </section>
 
-                {/* Small banners -> Slider (ONE at a time) */}
+                {/* Small banners -> Slider (Responsive + Frame + Better arrows + RTL flip) */}
                 <section id="promotions" className="mx-auto max-w-6xl px-4 pb-10">
-                  {loadingTop ? (
-                    <div className="h-[200px] sm:h-[320px] lg:h-[460px] rounded-3xl border border-white/10 bg-white/5" />
-                  ) : banners.length ? (
-                    <div className="relative">
-                      {/* Frame */}
-                      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-glass">
-                        {/* ✅ Responsive height بدل aspect-[3/4] */}
-                        <div className="relative w-full h-[200px] sm:h-[320px] lg:h-[460px]">
-                          <AnimatePresence initial={false} custom={bannerDir} mode="wait">
-                            <motion.a
-                              key={banners[bannerIndex]?.id}
-                              href={banners[bannerIndex]?.link || "#"}
-                              className="absolute inset-0 block group"
-                              custom={bannerDir}
-                              variants={{
-                                enter: (dir) => ({
-                                  x: (dir * (isRTL ? -1 : 1)) * 30,
-                                  opacity: 0,
-                                  filter: "blur(6px)",
-                                  scale: 0.995,
-                                }),
-                                center: { x: 0, opacity: 1, filter: "blur(0px)", scale: 1 },
-                                exit: (dir) => ({
-                                  x: (dir * (isRTL ? -1 : 1)) * -30,
-                                  opacity: 0,
-                                  filter: "blur(6px)",
-                                  scale: 0.995,
-                                }),
-                              }}
-                              initial="enter"
-                              animate="center"
-                              exit="exit"
-                              transition={{ duration: 0.28, ease: "easeOut" }}
-                              whileHover={{ y: -3 }}
-                              aria-label="Promotion banner"
-                            >
-                              <img
-                                src={banners[bannerIndex]?.image_url}
-                                alt=""
-                                className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
-                                loading="lazy"
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
-                            </motion.a>
-                          </AnimatePresence>
-                        </div>
-                      </div>
-                
-                      {/* Arrows */}
-                      <button
-                        type="button"
-                        onClick={goPrevBanner}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 rounded-2xl bg-white/10 px-3 py-2 text-sm ring-1 ring-white/15 hover:bg-white/15 backdrop-blur-glass"
-                        aria-label="Previous banner"
-                      >
-                        ‹
-                      </button>
-                
-                      <button
-                        type="button"
-                        onClick={goNextBanner}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-2xl bg-white/10 px-3 py-2 text-sm ring-1 ring-white/15 hover:bg-white/15 backdrop-blur-glass"
-                        aria-label="Next banner"
-                      >
-                        ›
-                      </button>
-                
-                      {/* Dots */}
-                      <div className="mt-3 flex items-center justify-center gap-2">
-                        {banners.map((_, i) => {
-                          const active = i === bannerIndex;
-                          return (
-                            <button
-                              key={i}
-                              type="button"
-                              onClick={() => {
-                                setBannerDir(i > bannerIndex ? 1 : -1);
-                                setBannerIndex(i);
-                              }}
-                              className={[
-                                "h-2.5 w-2.5 rounded-full ring-1 transition",
-                                active
-                                  ? "bg-arabica-aqua/60 ring-arabica-aqua/50"
-                                  : "bg-white/20 ring-white/20 hover:bg-white/30",
-                              ].join(" ")}
-                              aria-label={`Go to banner ${i + 1}`}
-                            />
-                          );
-                        })}
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="rounded-3xl border border-white/10 bg-white/5 p-4 text-white/70">
-                      {t("menu.noBanners")}
-                    </div>
-                  )}
-                </section>
+                    {loadingTop ? (
+                        <div className="h-[200px] sm:h-[320px] lg:h-[460px] rounded-3xl border border-white/10 bg-white/5" />
+                    ) : banners.length ? (
+                        <div className="relative">
+                            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-glass">
+                                <div className="relative w-full h-[220px] sm:h-[340px] lg:h-[480px]">
+                                    <AnimatePresence initial={false} custom={bannerDir} mode="wait">
+                                        <motion.a
+                                            key={banners[bannerIndex]?.id}
+                                            href={banners[bannerIndex]?.link || "#"}
+                                            className="absolute inset-0 block"
+                                            custom={bannerDir}
+                                            variants={{
+                                                enter: (dir) => ({
+                                                    x: (dir * (isRTL ? -1 : 1)) * 30,
+                                                    opacity: 0,
+                                                    filter: "blur(6px)",
+                                                    scale: 0.995,
+                                                }),
+                                                center: { x: 0, opacity: 1, filter: "blur(0px)", scale: 1 },
+                                                exit: (dir) => ({
+                                                    x: (dir * (isRTL ? -1 : 1)) * -30,
+                                                    opacity: 0,
+                                                    filter: "blur(6px)",
+                                                    scale: 0.995,
+                                                }),
+                                            }}
+                                            initial="enter"
+                                            animate="center"
+                                            exit="exit"
+                                            transition={{ duration: 0.32, ease: "easeOut" }}
+                                            whileHover={{ y: -2 }}
+                                            aria-label="Promotion banner"
+                                        >
+                                            {/* ✅ Inner frame/padding to make ALL images clearer */}
+                                            <div className="absolute inset-0 p-2 sm:p-3">
+                                                <div className="h-full w-full overflow-hidden rounded-[22px] bg-black/10 ring-1 ring-white/10">
+                                                    <img
+                                                        src={banners[bannerIndex]?.image_url}
+                                                        alt=""
+                                                        className="h-full w-full object-cover object-center"
+                                                        loading="lazy"
+                                                    />
+                                                </div>
+                                            </div>
 
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
+                                        </motion.a>
+                                    </AnimatePresence>
+                                </div>
+                            </div>
+
+                            {/* ✅ Arrows clearer + RTL flip (right=prev in RTL) */}
+                            {(() => {
+                                const PrevButton = (
+                                    <button
+                                        type="button"
+                                        onClick={goPrevBanner}
+                                        className="absolute top-1/2 -translate-y-1/2 rounded-full bg-black/40 px-3 py-2 text-xl ring-1 ring-white/20 hover:bg-black/55 backdrop-blur-glass shadow-glass"
+                                        aria-label="Previous banner"
+                                    >
+                                        ‹
+                                    </button>
+                                );
+
+                                const NextButton = (
+                                    <button
+                                        type="button"
+                                        onClick={goNextBanner}
+                                        className="absolute top-1/2 -translate-y-1/2 rounded-full bg-black/40 px-3 py-2 text-xl ring-1 ring-white/20 hover:bg-black/55 backdrop-blur-glass shadow-glass"
+                                        aria-label="Next banner"
+                                    >
+                                        ›
+                                    </button>
+                                );
+
+                                return (
+                                    <>
+                                        <div className="absolute left-3">
+                                            {isRTL ? NextButton : PrevButton}
+                                        </div>
+                                        <div className="absolute right-3">
+                                            {isRTL ? PrevButton : NextButton}
+                                        </div>
+                                    </>
+                                );
+                            })()}
+
+                            {/* Dots */}
+                            <div className="mt-3 flex items-center justify-center gap-2">
+                                {banners.map((_, i) => {
+                                    const active = i === bannerIndex;
+                                    return (
+                                        <button
+                                            key={i}
+                                            type="button"
+                                            onClick={() => {
+                                                setBannerDir(i > bannerIndex ? 1 : -1);
+                                                setBannerIndex(i);
+                                            }}
+                                            className={[
+                                                "h-2.5 w-2.5 rounded-full ring-1 transition",
+                                                active
+                                                    ? "bg-arabica-aqua/70 ring-arabica-aqua/60"
+                                                    : "bg-white/20 ring-white/20 hover:bg-white/35",
+                                            ].join(" ")}
+                                            aria-label={`Go to banner ${i + 1}`}
+                                        />
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="rounded-3xl border border-white/10 bg-white/5 p-4 text-white/70">
+                            {t("menu.noBanners")}
+                        </div>
+                    )}
+                </section>
 
                 {/* Recommended products: continuous marquee, pauses on hover */}
                 <section className="mx-auto max-w-6xl px-4 pb-12">
@@ -767,4 +788,3 @@ function ProductSkeletonGrid() {
         </div>
     );
 }
-
