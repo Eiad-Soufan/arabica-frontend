@@ -269,7 +269,7 @@ export default function Menu() {
                             </div>
 
                             {/* ✅ Arrows clearer + RTL flip (right=prev in RTL) */}
-                            {(() => {
+                            {/* {(() => {
                                 const PrevButton = (
                                     <button
                                         type="button"
@@ -302,7 +302,7 @@ export default function Menu() {
                                         </div>
                                     </>
                                 );
-                            })()}
+                            })()} */}
 
                             {/* Dots */}
                             <div className="mt-3 flex items-center justify-center gap-2">
@@ -788,4 +788,5 @@ function ProductSkeletonGrid() {
         </div>
     );
 }
+
 
