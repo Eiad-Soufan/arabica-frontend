@@ -66,6 +66,44 @@ export default function Menu() {
     const openProduct = (p) => setSelectedProduct(p);
     const closeProduct = () => setSelectedProduct(null);
 
+    // ====== BANNERS SLIDER (NEW) ======
+    const [bannerIndex, setBannerIndex] = useState(0);
+    const [bannerDir, setBannerDir] = useState(1); // 1 next, -1 prev
+
+    const isRTL = (typeof i18n.dir === "function" ? i18n.dir() : (lang === "ar")) === "rtl";
+
+    const goPrevBanner = () => {
+        if (!banners.length) return;
+        setBannerDir(-1);
+        setBannerIndex((i) => (i - 1 + banners.length) % banners.length);
+    };
+
+    const goNextBanner = () => {
+        if (!banners.length) return;
+        setBannerDir(1);
+        setBannerIndex((i) => (i + 1) % banners.length);
+    };
+
+    // Clamp banner index when banners change
+    useEffect(() => {
+        setBannerIndex((i) => {
+            if (!banners?.length) return 0;
+            return Math.min(i, banners.length - 1);
+        });
+    }, [banners.length]);
+
+    // Autoplay every 2 seconds
+    useEffect(() => {
+        if (!banners.length) return;
+        const id = setInterval(() => {
+            setBannerDir(1);
+            setBannerIndex((i) => (i + 1) % banners.length);
+        }, 2000);
+
+        return () => clearInterval(id);
+    }, [banners.length]);
+    // ====== END BANNERS SLIDER (NEW) ======
+
     const categoryNameById = useMemo(() => {
         const m = new Map();
         for (const c of categories) {
@@ -166,7 +204,6 @@ export default function Menu() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.55 }}
                         >
-
                             <h1 className="mt-4 font-sukar text-3xl sm:text-4xl md:text-5xl">
                                 {t("menu.title")}
                             </h1>
@@ -176,37 +213,107 @@ export default function Menu() {
                     </div>
                 </section>
 
-                {/* Small banners (NO title/subtitle, small vertical cards) */}
+                {/* Small banners -> Slider (ONE at a time) */}
                 <section id="promotions" className="mx-auto max-w-6xl px-4 pb-10">
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                        {loadingTop ? (
-                            Array.from({ length: 4 }).map((_, i) => (
-                                <div key={i} className="aspect-[3/4] rounded-3xl border border-white/10 bg-white/5" />
-                            ))
-                        ) : banners.length ? (
-                            banners.map((b) => (
-                                <motion.div
-                                    key={b.id}
-                                    href={b.link || "#"}
-                                    whileHover={{ y: -4 }}
-                                    className="group overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-glass"
-                                >
-                                    <div className="aspect-[3/4] w-full">
-                                        <img
-                                            src={b.image_url}
-                                            alt=""
-                                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                </motion.div>
-                            ))
-                        ) : (
-                            <div className="col-span-full rounded-3xl border border-white/10 bg-white/5 p-4 text-white/70">
-                                {t("menu.noBanners")}
+                    {loadingTop ? (
+                        <div className="aspect-[3/4] rounded-3xl border border-white/10 bg-white/5" />
+                    ) : banners.length ? (
+                        <div className="relative">
+                            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-glass">
+                                <div className="aspect-[3/4] w-full relative">
+                                    <AnimatePresence initial={false} custom={bannerDir} mode="wait">
+                                        <motion.a
+                                            key={banners[bannerIndex]?.id}
+                                            href={banners[bannerIndex]?.link || "#"}
+                                            className="absolute inset-0 block group"
+                                            custom={bannerDir}
+                                            variants={{
+                                                enter: (dir) => ({
+                                                    x: (dir * (isRTL ? -1 : 1)) * 30,
+                                                    opacity: 0,
+                                                    filter: "blur(6px)",
+                                                    scale: 0.995,
+                                                }),
+                                                center: {
+                                                    x: 0,
+                                                    opacity: 1,
+                                                    filter: "blur(0px)",
+                                                    scale: 1,
+                                                },
+                                                exit: (dir) => ({
+                                                    x: (dir * (isRTL ? -1 : 1)) * -30,
+                                                    opacity: 0,
+                                                    filter: "blur(6px)",
+                                                    scale: 0.995,
+                                                }),
+                                            }}
+                                            initial="enter"
+                                            animate="center"
+                                            exit="exit"
+                                            transition={{ duration: 0.28, ease: "easeOut" }}
+                                            whileHover={{ y: -3 }}
+                                            aria-label="Promotion banner"
+                                        >
+                                            <img
+                                                src={banners[bannerIndex]?.image_url}
+                                                alt=""
+                                                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                                                loading="lazy"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                                        </motion.a>
+                                    </AnimatePresence>
+                                </div>
                             </div>
-                        )}
-                    </div>
+
+                            {/* Arrows */}
+                            <button
+                                type="button"
+                                onClick={goPrevBanner}
+                                className="absolute left-3 top-1/2 -translate-y-1/2 rounded-2xl bg-white/10 px-3 py-2 text-sm ring-1 ring-white/15 hover:bg-white/15 backdrop-blur-glass"
+                                aria-label="Previous banner"
+                            >
+                                ‹
+                            </button>
+
+                            <button
+                                type="button"
+                                onClick={goNextBanner}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 rounded-2xl bg-white/10 px-3 py-2 text-sm ring-1 ring-white/15 hover:bg-white/15 backdrop-blur-glass"
+                                aria-label="Next banner"
+                            >
+                                ›
+                            </button>
+
+                            {/* Dots */}
+                            <div className="mt-3 flex items-center justify-center gap-2">
+                                {banners.map((_, i) => {
+                                    const active = i === bannerIndex;
+                                    return (
+                                        <button
+                                            key={i}
+                                            type="button"
+                                            onClick={() => {
+                                                setBannerDir(i > bannerIndex ? 1 : -1);
+                                                setBannerIndex(i);
+                                            }}
+                                            className={[
+                                                "h-2.5 w-2.5 rounded-full ring-1 transition",
+                                                active
+                                                    ? "bg-arabica-aqua/60 ring-arabica-aqua/50"
+                                                    : "bg-white/20 ring-white/20 hover:bg-white/30",
+                                            ].join(" ")}
+                                            aria-label={`Go to banner ${i + 1}`}
+                                        />
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="rounded-3xl border border-white/10 bg-white/5 p-4 text-white/70">
+                            {t("menu.noBanners")}
+                        </div>
+                    )}
                 </section>
 
                 {/* Recommended products: continuous marquee, pauses on hover */}
