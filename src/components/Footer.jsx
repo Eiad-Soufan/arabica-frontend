@@ -106,7 +106,7 @@ export default function Footer() {
                         <div className="mt-4 space-y-2 text-sm text-white/75">
                             <div>
                                 <span className="text-white/60">{t("footer.location")}:</span>{" "}
-                                <span>{t("footer.locationValue")}</span>
+                                <span>G10-Cova Square, Jalan Teknologi, Kota Damansara, PJU 5, Taman Sains Selangor, 47810 Petaling Jaya, Selangor</span>
                             </div>
                             <div>
                                 <span className="text-white/60">{t("footer.hours")}:</span>{" "}

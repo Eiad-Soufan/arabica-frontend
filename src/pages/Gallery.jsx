@@ -60,33 +60,8 @@ export default function Gallery() {
         <div className="min-h-screen">
             <Header />
 
-            <main className="mx-auto max-w-6xl px-4 pt-28 pb-16">
-                <section className="relative overflow-hidden">
-                    <div className="absolute inset-0 opacity-70 bg-gradient-to-b from-arabica-aqua/10 via-transparent to-transparent" />
-                    <div className="mx-auto max-w-6xl px-4 py-10">
-                        <motion.div
-                            initial={{ opacity: 0, y: 14 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.55 }}
-                        >
+            <main className="mx-auto max-w-6xl px-4 pt-24 pb-16">
 
-                            <h1 className="mt-4 font-sukar text-3xl sm:text-4xl md:text-5xl">
-                                {/* <span className="text-arabica-aqua">{t("contact.title")}</span> */}{t("gallery.title")}
-                            </h1>
-
-                            {/* <p className="mt-3 max-w-2xl text-white/80">{t("menu.subtitle")}</p> */}
-                        </motion.div>
-
-                        <motion.p
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.05 }}
-                            className="mt-2 opacity-80"
-                        >
-                            {t("gallery.subtitle")}
-                        </motion.p>
-                    </div>
-                </section>
 
                 {/* Videos */}
                 <section className="mt-10">

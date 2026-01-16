@@ -195,24 +195,8 @@ export default function Menu() {
         <div className="min-h-screen bg-arabica-deep text-white">
             <Header />
 
-            <main className="mx-auto max-w-6xl px-4 pt-28 pb-16">
+            <main className="mx-auto max-w-6xl px-4 pt-24 pb-16">
                 {/* Top title strip */}
-                <section className="relative overflow-hidden">
-                    <div className="absolute inset-0 opacity-70 bg-gradient-to-b from-arabica-aqua/10 via-transparent to-transparent" />
-                    <div className="mx-auto max-w-6xl px-4 py-10">
-                        <motion.div
-                            initial={{ opacity: 0, y: 14 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.55 }}
-                        >
-                            <h1 className="mt-4 font-sukar text-3xl sm:text-4xl md:text-5xl">
-                                {t("menu.title")}
-                            </h1>
-
-                            {/* <p className="mt-3 max-w-2xl text-white/80">{t("menu.subtitle")}</p> */}
-                        </motion.div>
-                    </div>
-                </section>
 
                 {/* Small banners -> Slider (Responsive + Frame + Better arrows + RTL flip) */}
                 <section id="promotions" className="mx-auto max-w-6xl px-4 pb-10">
@@ -344,80 +328,79 @@ export default function Menu() {
                         </div>
                     </div>
 
-                    <div className="mt-4 arabica-marquee rounded-3xl border border-white/10 bg-white/5 shadow-glass p-3">
-                        {loadingTop ? (
-                            <div className="flex gap-3">
-                                {Array.from({ length: 6 }).map((_, i) => (
-                                    <div
-                                        key={i}
-                                        className="w-[240px] overflow-hidden rounded-2xl border border-white/10 bg-white/5"
-                                    >
-                                        <div className="h-28 bg-white/10" />
-                                        <div className="p-3">
-                                            <div className="h-4 w-2/3 bg-white/10 rounded" />
-                                            <div className="mt-2 h-3 w-1/2 bg-white/10 rounded" />
-                                        </div>
+                    {loadingTop ? (
+                        <div className="flex gap-3">
+                            {Array.from({ length: 6 }).map((_, i) => (
+                                <div
+                                    key={i}
+                                    className="w-[240px] overflow-hidden rounded-2xl border border-white/10 bg-white/5"
+                                >
+                                    <div className="h-28 bg-white/10" />
+                                    <div className="p-3">
+                                        <div className="h-4 w-2/3 bg-white/10 rounded" />
+                                        <div className="mt-2 h-3 w-1/2 bg-white/10 rounded" />
                                     </div>
-                                ))}
-                            </div>
-                        ) : recommended.length ? (
-                            <div dir="ltr" className="mt-4 arabica-marquee rounded-3xl border border-white/10 bg-white/5 shadow-glass p-3">
-                                {loadingTop ? (
-                                    <div className="flex gap-3">
-                                        {Array.from({ length: 6 }).map((_, i) => (
-                                            <div
-                                                key={i}
-                                                className="w-[240px] overflow-hidden rounded-2xl border border-white/10 bg-white/5"
-                                            >
-                                                <div className="h-28 bg-white/10" />
-                                                <div className="p-3">
-                                                    <div className="h-4 w-2/3 bg-white/10 rounded" />
-                                                    <div className="mt-2 h-3 w-1/2 bg-white/10 rounded" />
-                                                </div>
+                                </div>
+                            ))}
+                        </div>
+                    ) : recommended.length ? (
+                        <div dir="ltr" className="mt-4 arabica-marquee rounded-3xl border border-white/10 bg-white/5 shadow-glass p-3">
+                            {loadingTop ? (
+                                <div className="flex gap-3">
+                                    {Array.from({ length: 6 }).map((_, i) => (
+                                        <div
+                                            key={i}
+                                            className="w-[240px] overflow-hidden rounded-2xl border border-white/10 bg-white/5"
+                                        >
+                                            <div className="h-28 bg-white/10" />
+                                            <div className="p-3">
+                                                <div className="h-4 w-2/3 bg-white/10 rounded" />
+                                                <div className="mt-2 h-3 w-1/2 bg-white/10 rounded" />
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : recommended.length ? (
+                                <div className="arabica-marquee-move">
+                                    <div className="arabica-marquee-track">
+                                        {recommended.map((p) => (
+                                            <div key={`a-${p.id}`} className="px-2">
+                                                <RecommendedMarqueeCard
+                                                    p={p}
+                                                    lang={lang}
+                                                    t={t}
+                                                    onClick={() => openProduct(p)}
+                                                />
                                             </div>
                                         ))}
                                     </div>
-                                ) : recommended.length ? (
-                                    <div className="arabica-marquee-move">
-                                        <div className="arabica-marquee-track">
-                                            {recommended.map((p) => (
-                                                <div key={`a-${p.id}`} className="px-2">
-                                                    <RecommendedMarqueeCard
-                                                        p={p}
-                                                        lang={lang}
-                                                        t={t}
-                                                        onClick={() => openProduct(p)}
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
 
-                                        <div className="arabica-marquee-track" aria-hidden="true">
-                                            {recommended.map((p) => (
-                                                <div key={`b-${p.id}`} className="px-2">
-                                                    <RecommendedMarqueeCard
-                                                        p={p}
-                                                        lang={lang}
-                                                        t={t}
-                                                        onClick={() => openProduct(p)}
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
+                                    <div className="arabica-marquee-track" aria-hidden="true">
+                                        {recommended.map((p) => (
+                                            <div key={`b-${p.id}`} className="px-2">
+                                                <RecommendedMarqueeCard
+                                                    p={p}
+                                                    lang={lang}
+                                                    t={t}
+                                                    onClick={() => openProduct(p)}
+                                                />
+                                            </div>
+                                        ))}
                                     </div>
-                                ) : (
-                                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-white/70">
-                                        {t("menu.noRecommended")}
-                                    </div>
-                                )}
-                            </div>
+                                </div>
+                            ) : (
+                                <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-white/70">
+                                    {t("menu.noRecommended")}
+                                </div>
+                            )}
+                        </div>
 
-                        ) : (
-                            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-white/70">
-                                {t("menu.noRecommended")}
-                            </div>
-                        )}
-                    </div>
+                    ) : (
+                        <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-white/70">
+                            {t("menu.noRecommended")}
+                        </div>
+                    )}
+
                 </section>
 
                 {/* Categories + Products */}
