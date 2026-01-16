@@ -67,9 +67,10 @@
     "errors": {
       "loadTop": "Failed to load banners / recommended / categories.",
       "loadProducts": "Failed to load products."
-    }
+    },
+     "close": "Close"
   },
-  "close": "Close",
+ 
   "footer": {
   "tagline": "Restaurant",
   "description": "Premium Arabic dining with a modern touch and consistent quality—every time.",

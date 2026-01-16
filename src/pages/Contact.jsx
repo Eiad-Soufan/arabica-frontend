@@ -23,6 +23,9 @@ export default function Contact() {
     // خليه كما هو بدون مسافات داخل الرقم النهائي (العرض بس يكون LTR)
     const managementPhone = "01111112008";
     const restaurantPhone = "01160772422"; // من "0 1160772422" مع إزالة المسافة
+    const waManagement = `https://wa.me/6${managementPhone}`;
+    const waRestaurant = `https://wa.me/6${restaurantPhone}`;
+
 
     return (
         <div className="min-h-screen">
@@ -108,9 +111,12 @@ export default function Contact() {
                             </a>
 
                             <a
-                                href={`tel:${managementPhone}`}
+                                href={waManagement}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="block rounded-xl border border-white/10 bg-white/5 px-4 py-3 hover:bg-white/10 transition"
                             >
+
                                 <div className="text-sm opacity-80">{t("contact.management")}</div>
                                 <div className="mt-1 font-medium">
                                     <LTR>{managementPhone}</LTR>
@@ -118,9 +124,12 @@ export default function Contact() {
                             </a>
 
                             <a
-                                href={`tel:${restaurantPhone}`}
+                                href={waRestaurant}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="block rounded-xl border border-white/10 bg-white/5 px-4 py-3 hover:bg-white/10 transition"
                             >
+
                                 <div className="text-sm opacity-80">{t("contact.restaurant")}</div>
                                 <div className="mt-1 font-medium">
                                     <LTR>{restaurantPhone}</LTR>

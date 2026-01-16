@@ -63,9 +63,10 @@
     "errors": {
       "loadTop": "Gagal memuatkan banner / disyorkan / kategori.",
       "loadProducts": "Gagal memuatkan produk."
-    }
+    },
+       "close": "Tutup"
   },
-   "close": "Tutup",
+
   "footer": {
   "tagline": "Restoran",
   "description": "Hidangan Arab premium dengan sentuhan moden dan kualiti yang konsisten setiap masa.",
