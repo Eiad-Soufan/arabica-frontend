@@ -1,6 +1,6 @@
 {
   "brand": "Arabica",
-  "nav": { "menu": "Menu", "promotions": "Promotions", "gallery": "Gallery", "contact": "Contact" },
+"nav": { "home": "Home", "menu": "Menu", "promotions": "Promotions", "gallery": "Gallery", "contact": "Contact" },
   "hero": { "description": "A modern Arabic dining experience blending authentic flavors, refined ambiance, and a menu that feels like home.","badge": "Arabic Restaurant • Premium Experience", "title": "Taste the Authentic Arabica.", "cta1": "Explore Menu", "cta2": "View Promotions" },
   "about": {
     "title": "About Us",

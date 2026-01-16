@@ -645,7 +645,8 @@ function RecommendedMarqueeCard({ p, lang, t, onClick }) {
         <button
             type="button"
             onClick={onClick}
-            className="w-[240px] text-left group overflow-hidden rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition"
+            className="w-[240px] text-left group overflow-hidden rounded-2xl bg-white/5 hover:bg-white/10 transition"
+
             title={name}
         >
             <div className="relative h-28">

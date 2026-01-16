@@ -131,13 +131,13 @@ export default function WhyChooseUs() {
                         {t("why.title")}
                     </span>
 
-                    <h2 className="mt-6 font-sukar text-3xl md:text-4xl">
+                    {/* <h2 className="mt-6 font-sukar text-3xl md:text-4xl">
                         {t("why.headline")}
                     </h2>
 
                     <p className="mt-3 text-white/75">
                         {t("why.text")}
-                    </p>
+                    </p> */}
                 </motion.div>
 
                 {/* ✅ 2x2 Grid */}

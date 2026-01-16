@@ -1,6 +1,6 @@
 {
   "brand": "Arabica",
-  "nav": { "menu": "Menu", "promotions": "Promosi", "gallery": "Galeri", "contact": "Hubungi" },
+"nav": { "home": "Utama", "menu": "Menu", "promotions": "Promosi", "gallery": "Galeri", "contact": "Hubungi" },
   "hero": { "description": "Pengalaman menjamu selera Arab moden yang menggabungkan rasa autentik, suasana elegan, dan menu yang terasa seperti di rumah.","badge": "Restoran Arab • Pengalaman Premium", "title": "Rasai Keaslian Arabica.", "cta1": "Lihat Menu", "cta2": "Lihat Promosi" },
     "about": {
     "title": "Tentang Kami",

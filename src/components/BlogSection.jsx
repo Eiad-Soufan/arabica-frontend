@@ -237,13 +237,13 @@ export default function BlogSection() {
                             {t("stories.title")}
                         </span>
 
-                        <h2 className="mt-6 font-sukar text-3xl leading-tight md:text-4xl">
+                        {/* <h2 className="mt-6 font-sukar text-3xl leading-tight md:text-4xl">
                             {t("stories.headline")}
                         </h2>
 
                         <p className="mt-5 text-base leading-relaxed text-white/80 md:text-lg">
                             {t("stories.text")}
-                        </p>
+                        </p> */}
                     </motion.div>
                 </div>
 

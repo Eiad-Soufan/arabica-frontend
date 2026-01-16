@@ -72,6 +72,10 @@ export default function Header() {
 
                 {/* Nav (Desktop) */}
                 <nav className="hidden items-center gap-7 md:flex">
+                    <button type="button" className={navBtn} onClick={() => go("/")}>
+                        {t("nav.home")}
+                    </button>
+
                     <button type="button" className={navBtn} onClick={() => go("/menu")}>
                         {t("nav.menu")}
                     </button>
@@ -109,6 +113,10 @@ export default function Header() {
             {mobileOpen && (
                 <div className="md:hidden px-4 pb-4">
                     <div className="rounded-2xl bg-black/25 ring-1 ring-white/10 backdrop-blur-glass p-3 shadow-glass flex flex-col gap-3">
+                        <button type="button" className={navBtn} onClick={() => go("/")}>
+                            {t("nav.home")}
+                        </button>
+
                         <button type="button" className={navBtn} onClick={() => go("/menu")}>
                             {t("nav.menu")}
                         </button>

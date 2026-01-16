@@ -41,36 +41,147 @@ export default function Testimonials() {
             : "en";
 
     const items = useMemo(() => {
-        // بيانات ديمو مترجمة (بدون API حالياً)
         if (lang === "ar") {
             return [
-                { name: "سارة", city: "كوالالمبور", rating: 5, text: "الطعم رائع والخدمة سريعة جدًا. رجعت مرتين بنفس الأسبوع!" },
-                { name: "أحمد", city: "سوبانغ", rating: 5, text: "أجواء راقية ونظافة ممتازة. المشاوي عندهم من الأفضل." },
-                { name: "ليلى", city: "بوتراجايا", rating: 5, text: "المنيو متنوع والحلويات ولا أطيب. الكنافة 🔥" },
-                { name: "محمد", city: "شاه علم", rating: 5, text: "الشاورما خرافية والصلصات متوازنة. تجربة تستاهل." },
-                { name: "نور", city: "أمبانغ", rating: 5, text: "كل شي مرتب… من الاستقبال للتقديم. أكيد بوصي أصحابي." },
-                { name: "ريم", city: "دامنسارا", rating: 5, text: "أفضل مكان للّمة! جو مريح وطعام يشهي." },
+                {
+                    name: "Esraa Mady",
+                    city: "Google Review",
+                    rating: 5,
+                    text: "مطعم رائع جدا شكرا لكم على حسن الضيافة خصوصا الغرفة العربية والطعام رااائع\nجزاكم الله كل خير",
+                },
+                {
+                    name: "Arwa Mohammed",
+                    city: "Google Review",
+                    rating: 5,
+                    text: "كل شئ مزبوط الاكل لذيذ والضيافة ممتازة شكرا",
+                },
+                {
+                    name: "Ibrahim Obadi",
+                    city: "Google Review",
+                    rating: 5,
+                    text: "مشاء الله مطعم نظيف وبنصح بالمشاااااااااوي\nوخاصه الغرفه العربيه 🥰🥰🥰🥰",
+                },
+                {
+                    name: "Puteri Amira Qistina",
+                    city: "Google Review",
+                    rating: 5,
+                    text: "خدمة جيدة جدًا وطعام لذيذ وأجواء مريحة!",
+                },
+                {
+                    name: "ash moh",
+                    city: "Google Review",
+                    rating: 5,
+                    text: "بصراحه الاكل جدا لا ينوصف من مذاق و ريحه\nوالخدمه جدا راقيه\nف انصح كل واحد يجرب لانو اذا ما جرب راح نص عمره 😍😍😍",
+                },
+                {
+                    name: "Ali Ahmed",
+                    city: "Google Review",
+                    rating: 5,
+                    text: "من افضل المطاعم والضيافه فيهه من راقيه\nشكرا خاص رضووان على الخدمه الاكثر من ممتازه",
+                },
+                {
+                    name: "Fahad Omar",
+                    city: "Google Review",
+                    rating: 5,
+                    text: "افضل مطعم واحلا اكل والخدمة رهيبة ، انصح فيه الكل",
+                },
             ];
         }
+
         if (lang === "ms") {
             return [
-                { name: "Aina", city: "Kuala Lumpur", rating: 5, text: "Rasa memang sedap dan servis sangat pantas. Pasti datang lagi!" },
-                { name: "Haziq", city: "Subang", rating: 5, text: "Suasana elegan dan bersih. Grill mereka antara yang terbaik." },
-                { name: "Farah", city: "Putrajaya", rating: 5, text: "Menu pelbagai dan pencuci mulut terbaik. Kunafa memang padu!" },
-                { name: "Amir", city: "Shah Alam", rating: 5, text: "Shawarma sangat berbaloi. Sos seimbang dan tidak muak." },
-                { name: "Nadia", city: "Ampang", rating: 5, text: "Semuanya kemas — dari sambutan hingga hidangan. Sangat disyorkan." },
-                { name: "Zara", city: "Damansara", rating: 5, text: "Tempat terbaik untuk berkumpul. Suasana selesa dan makanan menyelerakan." },
+                {
+                    name: "Esraa Mady",
+                    city: "Google Review",
+                    rating: 5,
+                    text: "Restoran yang sangat hebat—terima kasih atas layanan dan hospitaliti yang baik, terutamanya bilik Arab dan makanan yang sangat sedap. Semoga Allah membalas kebaikan anda.",
+                },
+                {
+                    name: "Arwa Mohammed",
+                    city: "Google Review",
+                    rating: 5,
+                    text: "Semuanya memang terbaik—makanan sedap dan hospitaliti ممتاز. Terima kasih.",
+                },
+                {
+                    name: "Ibrahim Obadi",
+                    city: "Google Review",
+                    rating: 5,
+                    text: "MasyaAllah, restoran sangat bersih. Saya sangat syorkan hidangan panggang—terutamanya bilik Arab 🥰🥰🥰🥰",
+                },
+                {
+                    name: "Puteri Amira Qistina",
+                    city: "Google Review",
+                    rating: 5,
+                    text: "Servis sangat baik, makanan sedap, dan suasana yang selesa!",
+                },
+                {
+                    name: "ash moh",
+                    city: "Google Review",
+                    rating: 5,
+                    text: "Sejujurnya, makanan memang tak dapat digambarkan—rasa dan bau sangat memukau, dan servis sangat classy. Saya nasihatkan semua orang cuba, kalau tak cuba macam rugi 😍😍😍",
+                },
+                {
+                    name: "Ali Ahmed",
+                    city: "Google Review",
+                    rating: 5,
+                    text: "Antara restoran terbaik dengan hospitaliti yang sangat classy. Terima kasih khas kepada Radwan atas servis yang lebih daripada ممتاز.",
+                },
+                {
+                    name: "Fahad Omar",
+                    city: "Google Review",
+                    rating: 5,
+                    text: "Restoran terbaik, makanan sedap, dan servis memang hebat. Saya syorkan kepada semua.",
+                },
             ];
         }
+
+        // en
         return [
-            { name: "Sarah", city: "Kuala Lumpur", rating: 5, text: "Incredible flavor and super fast service. Came back twice this week!" },
-            { name: "Ahmed", city: "Subang", rating: 5, text: "Refined ambiance and spotless. Their grills are among the best." },
-            { name: "Laila", city: "Putrajaya", rating: 5, text: "Great variety and desserts are amazing. The kunafa is a must!" },
-            { name: "Mohammed", city: "Shah Alam", rating: 5, text: "Shawarma is outstanding and sauces are perfectly balanced." },
-            { name: "Noor", city: "Ampang", rating: 5, text: "Everything is well organized — from welcome to plating. Highly recommended." },
-            { name: "Reem", city: "Damansara", rating: 5, text: "Perfect spot for gatherings — cozy vibe and delicious food." },
+            {
+                name: "Esraa Mady",
+                city: "Google Review",
+                rating: 5,
+                text: "A truly wonderful restaurant—thank you for the great hospitality, especially the Arabic room and the amazing food. May Allah reward you with خير.",
+            },
+            {
+                name: "Arwa Mohammed",
+                city: "Google Review",
+                rating: 5,
+                text: "Everything is spot on—delicious food and excellent hospitality. Thank you.",
+            },
+            {
+                name: "Ibrahim Obadi",
+                city: "Google Review",
+                rating: 5,
+                text: "Mashallah, a clean restaurant. I highly recommend the grills—especially the Arabic room 🥰🥰🥰🥰",
+            },
+            {
+                name: "Puteri Amira Qistina",
+                city: "Google Review",
+                rating: 5,
+                text: "Very good service, tasty food, and a comfortable atmosphere!",
+            },
+            {
+                name: "ash moh",
+                city: "Google Review",
+                rating: 5,
+                text: "Honestly, the food is indescribable—taste and aroma are amazing, and the service is very classy. I recommend everyone to try it, because if you don’t, you’ll miss out 😍😍😍",
+            },
+            {
+                name: "Ali Ahmed",
+                city: "Google Review",
+                rating: 5,
+                text: "One of the best restaurants, with very classy hospitality. Special thanks to Radwan for the more-than-excellent service.",
+            },
+            {
+                name: "Fahad Omar",
+                city: "Google Review",
+                rating: 5,
+                text: "Best restaurant, delicious food, and amazing service. I recommend it to everyone.",
+            },
         ];
     }, [lang]);
+
 
     // نكرر القائمة مرتين حتى يصير شريط لا نهائي (translateX -50%)
     const track = [...items, ...items];
@@ -89,13 +200,13 @@ export default function Testimonials() {
                         {t("testimonials.title")}
                     </span>
 
-                    <h2 className="mt-6 font-sukar text-3xl md:text-4xl">
+                    {/* <h2 className="mt-6 font-sukar text-3xl md:text-4xl">
                         {t("testimonials.headline")}
                     </h2>
 
                     <p className="mt-3 text-white/75">
                         {t("testimonials.text")}
-                    </p>
+                    </p> */}
                 </motion.div>
             </div>
 
