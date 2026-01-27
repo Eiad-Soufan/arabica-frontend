@@ -38,6 +38,7 @@
 },
 
   "menu": {
+    "viewCateringMenu":"Catering Menu",
     "badge": "Menu • Categories & Dishes",
     "title": "Our Menu",
     "subtitle": "Browse by category, discover recommended dishes, and explore our latest banners.",
@@ -129,3 +130,4 @@
 
 
 }
+
