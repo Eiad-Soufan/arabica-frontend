@@ -686,7 +686,8 @@ function ProductSkeletonGrid() {
 
 function StaticWideBanner({ src, alt, ratio = 1027 / 455 }) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-glass">
+   <div className="relative overflow-hidden rounded-3xl bg-white/5 shadow-glass">
+
       {/* ثابت النسبة بكل الشاشات */}
       <div className="relative w-full" style={{ aspectRatio: ratio }}>
         {/* خلفية blur (cover) */}
@@ -700,7 +701,8 @@ function StaticWideBanner({ src, alt, ratio = 1027 / 455 }) {
 
         {/* الصورة الأصلية بدون قص (contain) */}
         <div className="absolute inset-0 p-2 sm:p-3">
-          <div className="h-full w-full overflow-hidden rounded-[22px] bg-black/10 ring-1 ring-white/10">
+          <div className="h-full w-full overflow-hidden rounded-[22px] bg-black/10">
+
             <img
               src={src}
               alt={alt || ""}
@@ -723,7 +725,7 @@ function StaticBannerGrid({ images, altPrefix = "Banner", ratio = 1 }) {
       {images.map((src, idx) => (
         <div
           key={`${src}-${idx}`}
-          className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-glass"
+          className="relative overflow-hidden rounded-3xl bg-white/5 shadow-glass"
         >
           {/* نفس النسبة لكل كرت => تساوي المساحة */}
           <div className="relative w-full" style={{ aspectRatio: ratio }}>
@@ -751,4 +753,5 @@ function StaticBannerGrid({ images, altPrefix = "Banner", ratio = 1 }) {
     </div>
   );
 }
+
 
