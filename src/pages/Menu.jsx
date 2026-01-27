@@ -68,7 +68,6 @@ export default function Menu() {
 
 
 
-    const isRTL = (typeof i18n.dir === "function" ? i18n.dir() : (lang === "ar")) === "rtl";
 const BANNER_1 =
   "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769324786/1_vo9nbb.png";
 const BANNER_2 =
@@ -185,7 +184,8 @@ const CATERING_PDF_URL = "https://example.com/menu-catering.pdf";
         <div className="min-h-screen bg-arabica-deep text-white">
             <Header />
 
-            <main className="mx-auto max-w-6xl px-4 pt-24 pb-16">
+            <main className="mx-auto max-w-6xl px-4 pt-[112px] sm:pt-[128px] lg:pt-[136px] pb-16">
+
                 {/* Top title strip */}
 {/* ===== Static Banners: 1,2 then 4-grid (3_1..3_4) ===== */}
 <section className="pb-12">
@@ -204,7 +204,8 @@ const CATERING_PDF_URL = "https://example.com/menu-catering.pdf";
                
 
                 {/* Recommended products: continuous marquee, pauses on hover */}
-                <section className="mx-auto max-w-6xl px-4 pb-12">
+                <section className="pb-12">
+
                     <div className="flex items-end justify-between gap-3">
                         <div>
                             <h2 className="font-sukar text-xl sm:text-2xl">{t("menu.recommendedTitle")}</h2>
@@ -288,7 +289,8 @@ const CATERING_PDF_URL = "https://example.com/menu-catering.pdf";
                 </section>
 
                 {/* Categories + Products */}
-                <section id="menu" className="mx-auto max-w-6xl px-4 pb-16">
+                <section id="menu" className="pb-16">
+
                     <div className="flex flex-col gap-3">
                         <div className="flex items-end justify-between gap-3">
                             <div>
@@ -406,7 +408,8 @@ const CATERING_PDF_URL = "https://example.com/menu-catering.pdf";
                 </section>
 
             {/* ===== Catering banners + CTA PDF ===== */}
-<section className="mx-auto max-w-6xl px-4 pb-16">
+<section className="pb-16">
+
   <div className="space-y-4">
     <StaticWideBanner src={BANNER_4} alt="Banner 4" />
 
@@ -684,7 +687,8 @@ function ProductSkeletonGrid() {
 function StaticWideBanner({ src, alt }) {
   return (
     <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-glass">
-      <div className="relative w-full aspect-[21/6] sm:aspect-[21/5] lg:aspect-[21/5]">
+      {/* Height control */}
+      <div className="relative h-[240px] sm:h-[320px] lg:h-[420px]">
         <div className="absolute inset-0 p-2 sm:p-3">
           <div className="h-full w-full overflow-hidden rounded-[22px] bg-black/10 ring-1 ring-white/10">
             <img
@@ -701,19 +705,21 @@ function StaticWideBanner({ src, alt }) {
   );
 }
 
+
 function StaticBannerGrid({ images, altPrefix = "Banner" }) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+    <div dir="ltr" className="grid grid-cols-2 sm:grid-cols-4 gap-3">
       {images.map((src, idx) => (
         <div
           key={`${src}-${idx}`}
           className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-glass"
         >
-          <div className="relative aspect-[16/9]">
+          {/* Height control */}
+          <div className="relative h-[170px] sm:h-[200px] lg:h-[220px]">
             <img
               src={src}
               alt={`${altPrefix} ${idx + 1}`}
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover object-center"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
