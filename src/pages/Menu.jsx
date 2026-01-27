@@ -730,9 +730,10 @@ function StaticBannerGrid({ images, altPrefix = "Banner", ratio = 1 }) {
             <img
               src={src}
               alt={`${altPrefix} ${idx + 1}`}
-              className="absolute inset-0 h-full w-full object-contain p-2"
+              className="absolute inset-0 h-full w-full object-contain"
               loading="lazy"
             />
+
 
           </div>
         </div>
@@ -740,6 +741,7 @@ function StaticBannerGrid({ images, altPrefix = "Banner", ratio = 1 }) {
     </div>
   );
 }
+
 
 
 
