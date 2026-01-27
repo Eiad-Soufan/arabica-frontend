@@ -684,50 +684,71 @@ function ProductSkeletonGrid() {
 
 
 
-function StaticWideBanner({ src, alt }) {
+function StaticWideBanner({ src, alt, ratio = 1027 / 455 }) {
   return (
     <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-glass">
-      {/* Height control */}
-      <div className="relative h-[240px] sm:h-[320px] lg:h-[420px]">
+      {/* ثابت النسبة بكل الشاشات */}
+      <div className="relative w-full" style={{ aspectRatio: ratio }}>
+        {/* خلفية blur (cover) */}
+        <img
+          src={src}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover blur-xl scale-110 opacity-40"
+          loading="lazy"
+        />
+
+        {/* الصورة الأصلية بدون قص (contain) */}
         <div className="absolute inset-0 p-2 sm:p-3">
           <div className="h-full w-full overflow-hidden rounded-[22px] bg-black/10 ring-1 ring-white/10">
             <img
               src={src}
               alt={alt || ""}
-              className="h-full w-full object-cover object-center"
+              className="h-full w-full object-contain object-center"
               loading="lazy"
             />
           </div>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
       </div>
     </div>
   );
 }
 
 
-function StaticBannerGrid({ images, altPrefix = "Banner" }) {
+function StaticBannerGrid({ images, altPrefix = "Banner", ratio = 1 }) {
   return (
     <div dir="ltr" className="grid grid-cols-2 sm:grid-cols-4 gap-3">
       {images.map((src, idx) => (
         <div
           key={`${src}-${idx}`}
-          className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-glass"
+          className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-glass"
         >
-          {/* Height control */}
-          <div className="relative h-[170px] sm:h-[200px] lg:h-[220px]">
+          {/* نفس النسبة لكل كرت => تساوي المساحة */}
+          <div className="relative w-full" style={{ aspectRatio: ratio }}>
+            {/* خلفية blur */}
+            <img
+              src={src}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-cover blur-xl scale-110 opacity-35"
+              loading="lazy"
+            />
+
+            {/* الصورة بدون قص */}
             <img
               src={src}
               alt={`${altPrefix} ${idx + 1}`}
-              className="absolute inset-0 h-full w-full object-cover object-center"
+              className="absolute inset-0 h-full w-full object-contain object-center p-2"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
           </div>
         </div>
       ))}
     </div>
   );
 }
-
 
