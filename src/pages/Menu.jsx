@@ -69,9 +69,9 @@ export default function Menu() {
 
 
 const BANNER_1 =
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769324786/1_vo9nbb.png";
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769534065/1111_qvgyzg.jpg";
 const BANNER_2 =
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769325106/2_jonl2p.png";
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769533633/2222_djue4e.jpg";
 
 const BANNERS_3 = [
   "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527243/3_1_rnk2iu.jpg",
@@ -81,7 +81,7 @@ const BANNERS_3 = [
 ];
 
 const BANNER_4 =
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769325106/4_kyqlj7.png";
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769534117/4444_ciwm7u.jpg";
 
 const BANNERS_5 = [
   "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769531219/5_1_dr1or0.jpg",
@@ -740,6 +740,7 @@ function StaticBannerGrid({ images, altPrefix = "Banner", ratio = 1 }) {
     </div>
   );
 }
+
 
 
 
