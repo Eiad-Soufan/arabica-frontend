@@ -76,22 +76,22 @@ const BANNER_2 =
 const BANNERS_3 = [
   "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527243/3_1_rnk2iu.jpg",
   "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527335/3_2_guuh0l.jpg",
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527243/3_1_rnk2iu.jpg",
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527335/3_2_guuh0l.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769530615/3_3_mn31yg.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769530764/3_4_t8gf8z.jpg",
 ];
 
 const BANNER_4 =
   "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769325106/4_kyqlj7.png";
 
 const BANNERS_5 = [
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527243/3_1_rnk2iu.jpg",
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527335/3_2_guuh0l.jpg",
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527243/3_1_rnk2iu.jpg",
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527335/3_2_guuh0l.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769531219/5_1_dr1or0.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769531250/5_2_sa34wx.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769531952/5_3_wtjcn9.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769532019/Website-Bannar-09_vakuvd.jpg",
 ];
 
 // حط رابط مؤقت للـ PDF (بدّله لاحقاً)
-const CATERING_PDF_URL = "https://example.com/menu-catering.pdf";
+const CATERING_PDF_URL = "https://drive.google.com/file/d/1LEi-hNITj66ptuDHtRcAZhq7BdG9jvzE/view?usp=sharing";
 
 
 
@@ -686,38 +686,28 @@ function ProductSkeletonGrid() {
 
 function StaticWideBanner({ src, alt, ratio = 1027 / 455 }) {
   return (
-   <div className="relative overflow-hidden rounded-3xl bg-white/5 shadow-glass">
-
-      {/* ثابت النسبة بكل الشاشات */}
+    <div className="relative overflow-hidden rounded-3xl">
       <div className="relative w-full" style={{ aspectRatio: ratio }}>
-        {/* خلفية blur (cover) */}
+        
+        {/* خلفية blur فقط (مش إطار) */}
         <img
           src={src}
-          alt=""
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover blur-xl scale-110 opacity-40"
+        />
+
+        {/* الصورة الأساسية بدون قص وبدون إطار */}
+        <img
+          src={src}
+          alt={alt || ""}
+          className="absolute inset-0 h-full w-full object-contain"
           loading="lazy"
         />
 
-        {/* الصورة الأصلية بدون قص (contain) */}
-        <div className="absolute inset-0 p-2 sm:p-3">
-          <div className="h-full w-full overflow-hidden rounded-[22px] bg-black/10">
-
-            <img
-              src={src}
-              alt={alt || ""}
-              className="h-full w-full object-contain object-center"
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
       </div>
     </div>
   );
 }
-
 
 function StaticBannerGrid({ images, altPrefix = "Banner", ratio = 1 }) {
   return (
@@ -725,33 +715,31 @@ function StaticBannerGrid({ images, altPrefix = "Banner", ratio = 1 }) {
       {images.map((src, idx) => (
         <div
           key={`${src}-${idx}`}
-          className="relative overflow-hidden rounded-3xl bg-white/5 shadow-glass"
+          className="relative overflow-hidden rounded-3xl"
         >
-          {/* نفس النسبة لكل كرت => تساوي المساحة */}
           <div className="relative w-full" style={{ aspectRatio: ratio }}>
+
             {/* خلفية blur */}
             <img
               src={src}
-              alt=""
               aria-hidden="true"
               className="absolute inset-0 h-full w-full object-cover blur-xl scale-110 opacity-35"
-              loading="lazy"
             />
 
-            {/* الصورة بدون قص */}
+            {/* الصورة بدون قص وبدون إطار */}
             <img
               src={src}
               alt={`${altPrefix} ${idx + 1}`}
-              className="absolute inset-0 h-full w-full object-contain object-center p-2"
+              className="absolute inset-0 h-full w-full object-contain p-2"
               loading="lazy"
             />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
           </div>
         </div>
       ))}
     </div>
   );
 }
+
 
 
