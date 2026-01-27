@@ -34,6 +34,7 @@
   "text": "Detik-detik singkat di sebalik tabir—rasa, layanan, dan kisah dari dapur kami."
 },
   "menu": {
+    "viewCateringMenu":"Menu Majlis & Acara",
     "badge": "Menu • Kategori & Hidangan",
     "title": "Menu Kami",
     "subtitle": "Lihat mengikut kategori, temui hidangan disyorkan, dan ikuti banner terkini.",
@@ -125,3 +126,4 @@
 
 
 }
+
