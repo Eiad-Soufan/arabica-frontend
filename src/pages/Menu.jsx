@@ -85,8 +85,8 @@ const BANNER_4 =
 
 const BANNERS_5 = [
   "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769531219/5_1_dr1or0.jpg",
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769531250/5_2_sa34wx.jpg",
   "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769531952/5_3_wtjcn9.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769531250/5_2_sa34wx.jpg",
   "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769532019/Website-Bannar-09_vakuvd.jpg",
 ];
 
@@ -741,6 +741,7 @@ function StaticBannerGrid({ images, altPrefix = "Banner", ratio = 1 }) {
     </div>
   );
 }
+
 
 
 
