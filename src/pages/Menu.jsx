@@ -6,8 +6,8 @@ import {
     fetchCategories,
     fetchCategoryProducts,
     fetchRecommendedProducts,
-    fetchSmallBanners,
 } from "../api/menu.js";
+
 import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
 
@@ -47,7 +47,7 @@ export default function Menu() {
     const [categories, setCategories] = useState([]);
     const [activeCategoryId, setActiveCategoryId] = useState(null); // null = All
 
-    const [banners, setBanners] = useState([]);
+    
     const [recommended, setRecommended] = useState([]);
 
     const [products, setProducts] = useState([]);
@@ -66,43 +66,36 @@ export default function Menu() {
     const openProduct = (p) => setSelectedProduct(p);
     const closeProduct = () => setSelectedProduct(null);
 
-    // ====== BANNERS SLIDER (NEW) ======
-    const [bannerIndex, setBannerIndex] = useState(0);
-    const [bannerDir, setBannerDir] = useState(1); // 1 next, -1 prev
+
 
     const isRTL = (typeof i18n.dir === "function" ? i18n.dir() : (lang === "ar")) === "rtl";
+const BANNER_1 =
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769324786/f_auto,q_auto,w_800/1_vo9nbb.png";
+const BANNER_2 =
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769325106/f_auto,q_auto,w_800/2_jonl2p.png";
 
-    const goPrevBanner = () => {
-        if (!banners.length) return;
-        setBannerDir(-1);
-        setBannerIndex((i) => (i - 1 + banners.length) % banners.length);
-    };
+const BANNERS_3 = [
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527243/f_auto,q_auto,w_800/3_1_rnk2iu.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527335/f_auto,q_auto,w_800/3_2_guuh0l.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527243/f_auto,q_auto,w_800/3_1_rnk2iu.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527335/f_auto,q_auto,w_800/3_2_guuh0l.jpg",
+];
 
-    const goNextBanner = () => {
-        if (!banners.length) return;
-        setBannerDir(1);
-        setBannerIndex((i) => (i + 1) % banners.length);
-    };
+const BANNER_4 =
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769325106/f_auto,q_auto,w_800/4_kyqlj7.png";
 
-    // Clamp banner index when banners change
-    useEffect(() => {
-        setBannerIndex((i) => {
-            if (!banners?.length) return 0;
-            return Math.min(i, banners.length - 1);
-        });
-    }, [banners.length]);
+const BANNERS_5 = [
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527243/f_auto,q_auto,w_800/3_1_rnk2iu.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527335/f_auto,q_auto,w_800/3_2_guuh0l.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527243/f_auto,q_auto,w_800/3_1_rnk2iu.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527335/f_auto,q_auto,w_800/3_2_guuh0l.jpg",
+];
 
-    // Autoplay (slower): every 4.5 seconds
-    useEffect(() => {
-        if (!banners.length) return;
-        const id = setInterval(() => {
-            setBannerDir(1);
-            setBannerIndex((i) => (i + 1) % banners.length);
-        }, 4500);
+// حط رابط مؤقت للـ PDF (بدّله لاحقاً)
+const CATERING_PDF_URL = "https://example.com/menu-catering.pdf";
 
-        return () => clearInterval(id);
-    }, [banners.length]);
-    // ====== END BANNERS SLIDER (NEW) ======
+
+
 
     const categoryNameById = useMemo(() => {
         const m = new Map();
@@ -118,16 +111,13 @@ export default function Menu() {
         (async () => {
             try {
                 setLoadingTop(true);
-                const [cats, smallBanners, rec] = await Promise.all([
+                const [cats, rec] = await Promise.all([
                     fetchCategories(),
-                    fetchSmallBanners(),
                     fetchRecommendedProducts(),
                 ]);
 
                 if (!alive) return;
                 setCategories(Array.isArray(cats) ? cats : []);
-                // ✅ no slice(0,4): bring ALL banners from backend
-                setBanners(Array.isArray(smallBanners) ? smallBanners : []);
                 setRecommended(Array.isArray(rec) ? rec : []);
             } catch (e) {
                 if (!alive) return;
@@ -197,127 +187,21 @@ export default function Menu() {
 
             <main className="mx-auto max-w-6xl px-4 pt-24 pb-16">
                 {/* Top title strip */}
+{/* ===== Static Banners: 1,2 then 4-grid (3_1..3_4) ===== */}
+<section className="pb-12">
 
-                {/* Small banners -> Slider (Responsive + Frame + Better arrows + RTL flip) */}
-                <section id="promotions" className="mx-auto max-w-6xl px-4 pb-10">
-                    {loadingTop ? (
-                        <div className="h-[200px] sm:h-[320px] lg:h-[460px] rounded-3xl border border-white/10 bg-white/5" />
-                    ) : banners.length ? (
-                        <div className="relative">
-                            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-glass">
-                                <div className="relative w-full aspect-[21/9] sm:aspect-[21/9] lg:aspect-[21/9]">
-                                    <AnimatePresence initial={false} custom={bannerDir} mode="wait">
-                                        <motion.a
-                                            key={banners[bannerIndex]?.id}
-                                            href={banners[bannerIndex]?.link || "#"}
-                                            className="absolute inset-0 block"
-                                            custom={bannerDir}
-                                            variants={{
-                                                enter: (dir) => ({
-                                                    x: (dir * (isRTL ? -1 : 1)) * 30,
-                                                    opacity: 0,
-                                                    filter: "blur(6px)",
-                                                    scale: 0.995,
-                                                }),
-                                                center: { x: 0, opacity: 1, filter: "blur(0px)", scale: 1 },
-                                                exit: (dir) => ({
-                                                    x: (dir * (isRTL ? -1 : 1)) * -30,
-                                                    opacity: 0,
-                                                    filter: "blur(6px)",
-                                                    scale: 0.995,
-                                                }),
-                                            }}
-                                            initial="enter"
-                                            animate="center"
-                                            exit="exit"
-                                            transition={{ duration: 0.32, ease: "easeOut" }}
-                                            whileHover={{ y: -2 }}
-                                            aria-label="Promotion banner"
-                                        >
-                                            {/* ✅ Inner frame/padding to make ALL images clearer */}
-                                            <div className="absolute inset-0 p-2 sm:p-3">
-                                                <div className="h-full w-full overflow-hidden rounded-[22px] bg-black/10 ring-1 ring-white/10">
-                                                    <img
-                                                        src={banners[bannerIndex]?.image_url}
-                                                        alt=""
-                                                        className="h-full w-full object-cover object-center"
-                                                        loading="lazy"
-                                                    />
-                                                </div>
-                                            </div>
+  <div className="space-y-4">
+    <StaticWideBanner src={BANNER_1} alt="Banner 1" />
+    <StaticWideBanner src={BANNER_2} alt="Banner 2" />
 
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
-                                        </motion.a>
-                                    </AnimatePresence>
-                                </div>
-                            </div>
+    <StaticBannerGrid
+      images={BANNERS_3}
+      altPrefix="Banner 3"
+    />
+  </div>
+</section>
 
-                            {/* ✅ Arrows clearer + RTL flip (right=prev in RTL) */}
-                            {/* {(() => {
-                                const PrevButton = (
-                                    <button
-                                        type="button"
-                                        onClick={goPrevBanner}
-                                        className="absolute top-[45%] -translate-y-1/2 rounded-full bg-black/40 px-3 py-2 text-xl ring-1 ring-white/20 hover:bg-black/55 backdrop-blur-glass shadow-glass"
-                                        aria-label="Previous banner"
-                                    >
-                                        ‹
-                                    </button>
-                                );
-
-                                const NextButton = (
-                                    <button
-                                        type="button"
-                                        onClick={goNextBanner}
-                                        className="absolute top-1/2 -translate-y-1/2 rounded-full bg-black/40 px-3 py-2 text-xl ring-1 ring-white/20 hover:bg-black/55 backdrop-blur-glass shadow-glass"
-                                        aria-label="Next banner"
-                                    >
-                                        ›
-                                    </button>
-                                );
-
-                                return (
-                                    <>
-                                        <div className="absolute left-3">
-                                            {isRTL ? NextButton : PrevButton}
-                                        </div>
-                                        <div className="absolute right-3">
-                                            {isRTL ? PrevButton : NextButton}
-                                        </div>
-                                    </>
-                                );
-                            })()} */}
-
-                            {/* Dots */}
-                            <div className="mt-3 flex items-center justify-center gap-2">
-                                {banners.map((_, i) => {
-                                    const active = i === bannerIndex;
-                                    return (
-                                        <button
-                                            key={i}
-                                            type="button"
-                                            onClick={() => {
-                                                setBannerDir(i > bannerIndex ? 1 : -1);
-                                                setBannerIndex(i);
-                                            }}
-                                            className={[
-                                                "h-2.5 w-2.5 rounded-full ring-1 transition",
-                                                active
-                                                    ? "bg-arabica-aqua/70 ring-arabica-aqua/60"
-                                                    : "bg-white/20 ring-white/20 hover:bg-white/35",
-                                            ].join(" ")}
-                                            aria-label={`Go to banner ${i + 1}`}
-                                        />
-                                    );
-                                })}
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="rounded-3xl border border-white/10 bg-white/5 p-4 text-white/70">
-                            {t("menu.noBanners")}
-                        </div>
-                    )}
-                </section>
+               
 
                 {/* Recommended products: continuous marquee, pauses on hover */}
                 <section className="mx-auto max-w-6xl px-4 pb-12">
@@ -520,6 +404,28 @@ export default function Menu() {
                         </div>
                     </div>
                 </section>
+
+            {/* ===== Catering banners + CTA PDF ===== */}
+<section className="mx-auto max-w-6xl px-4 pb-16">
+  <div className="space-y-4">
+    <StaticWideBanner src={BANNER_4} alt="Banner 4" />
+
+    <StaticBannerGrid
+      images={BANNERS_5}
+      altPrefix="Banner 5"
+    />
+
+    <div className="pt-4 flex justify-center">
+      <button
+        onClick={() => window.open(CATERING_PDF_URL, "_blank", "noopener,noreferrer")}
+        className="rounded-2xl bg-arabica-aqua px-6 py-3 font-bold text-arabica-deep shadow-glass hover:opacity-95"
+      >
+        {t("menu.viewCateringMenu") /* أو اكتب نص ثابت إذا ما عندك ترجمة */}
+      </button>
+    </div>
+  </div>
+</section>
+
             </main>
 
             <Footer />
@@ -774,4 +680,47 @@ function ProductSkeletonGrid() {
 }
 
 
+
+function StaticWideBanner({ src, alt }) {
+  return (
+    <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-glass">
+      <div className="relative w-full aspect-[21/6] sm:aspect-[21/5] lg:aspect-[21/5]">
+        <div className="absolute inset-0 p-2 sm:p-3">
+          <div className="h-full w-full overflow-hidden rounded-[22px] bg-black/10 ring-1 ring-white/10">
+            <img
+              src={src}
+              alt={alt || ""}
+              className="h-full w-full object-cover object-center"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+      </div>
+    </div>
+  );
+}
+
+function StaticBannerGrid({ images, altPrefix = "Banner" }) {
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      {images.map((src, idx) => (
+        <div
+          key={`${src}-${idx}`}
+          className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-glass"
+        >
+          <div className="relative aspect-[16/9]">
+            <img
+              src={src}
+              alt={`${altPrefix} ${idx + 1}`}
+              className="absolute inset-0 h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
