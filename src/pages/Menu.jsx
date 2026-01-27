@@ -70,25 +70,25 @@ export default function Menu() {
 
     const isRTL = (typeof i18n.dir === "function" ? i18n.dir() : (lang === "ar")) === "rtl";
 const BANNER_1 =
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769324786/f_auto,q_auto,w_800/1_vo9nbb.png";
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769324786/1_vo9nbb.png";
 const BANNER_2 =
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769325106/f_auto,q_auto,w_800/2_jonl2p.png";
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769325106/2_jonl2p.png";
 
 const BANNERS_3 = [
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527243/f_auto,q_auto,w_800/3_1_rnk2iu.jpg",
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527335/f_auto,q_auto,w_800/3_2_guuh0l.jpg",
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527243/f_auto,q_auto,w_800/3_1_rnk2iu.jpg",
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527335/f_auto,q_auto,w_800/3_2_guuh0l.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527243/3_1_rnk2iu.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527335/3_2_guuh0l.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527243/3_1_rnk2iu.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527335/3_2_guuh0l.jpg",
 ];
 
 const BANNER_4 =
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769325106/f_auto,q_auto,w_800/4_kyqlj7.png";
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769325106/4_kyqlj7.png";
 
 const BANNERS_5 = [
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527243/f_auto,q_auto,w_800/3_1_rnk2iu.jpg",
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527335/f_auto,q_auto,w_800/3_2_guuh0l.jpg",
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527243/f_auto,q_auto,w_800/3_1_rnk2iu.jpg",
-  "https://res.cloudinary.com/dbwjopbcf/image/upload/v1769527335/f_auto,q_auto,w_800/3_2_guuh0l.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527243/3_1_rnk2iu.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527335/3_2_guuh0l.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527243/3_1_rnk2iu.jpg",
+  "https://res.cloudinary.com/dbwjopbcf/image/upload/f_auto,q_auto,w_800/v1769527335/3_2_guuh0l.jpg",
 ];
 
 // حط رابط مؤقت للـ PDF (بدّله لاحقاً)
@@ -723,4 +723,5 @@ function StaticBannerGrid({ images, altPrefix = "Banner" }) {
     </div>
   );
 }
+
 
