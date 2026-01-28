@@ -7,23 +7,35 @@ import Header from "../components/Header";
 
 // بسيط: نحاول نطلع رابط embed لليوتيوب إذا كان يوتيوب
 function toYouTubeEmbed(url) {
-    try {
-        const u = new URL(url);
-        // youtu.be/ID
-        if (u.hostname.includes("youtu.be")) {
-            const id = u.pathname.replace("/", "");
-            return id ? `https://www.youtube.com/embed/${id}` : null;
-        }
-        // youtube.com/watch?v=ID
-        if (u.hostname.includes("youtube.com")) {
-            const id = u.searchParams.get("v");
-            return id ? `https://www.youtube.com/embed/${id}` : null;
-        }
-        return null;
-    } catch {
-        return null;
+  try {
+    const u = new URL(url);
+
+    // youtu.be/ID
+    if (u.hostname.includes("youtu.be")) {
+      const id = u.pathname.split("/").filter(Boolean)[0];
+      return id ? `https://www.youtube.com/embed/${id}` : null;
     }
+
+    // youtube.com/watch?v=ID
+    if (u.hostname.includes("youtube.com")) {
+      const v = u.searchParams.get("v");
+      if (v) return `https://www.youtube.com/embed/${v}`;
+
+      // youtube.com/shorts/ID
+      const mShorts = u.pathname.match(/\/shorts\/([^/]+)/);
+      if (mShorts?.[1]) return `https://www.youtube.com/embed/${mShorts[1]}`;
+
+      // youtube.com/embed/ID
+      const mEmbed = u.pathname.match(/\/embed\/([^/]+)/);
+      if (mEmbed?.[1]) return `https://www.youtube.com/embed/${mEmbed[1]}`;
+    }
+
+    return null;
+  } catch {
+    return null;
+  }
 }
+
 
 export default function Gallery() {
     const { t } = useTranslation();
@@ -178,3 +190,4 @@ export default function Gallery() {
         </div>
     );
 }
+
