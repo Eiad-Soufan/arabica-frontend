@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import chefImg from "../assets/blog/chef.jpg";
+import chefImg from "../assets/blog/chef-preparing-food.jpg";
 import dallahImg from "../assets/blog/dallah.jpg";
 import spicesImg from "../assets/blog/spices.jpg";
 
@@ -315,3 +315,4 @@ export default function BlogSection() {
         </section>
     );
 }
+
