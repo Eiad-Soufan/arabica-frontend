@@ -192,7 +192,7 @@ const CATERING_PDF_URL = "https://drive.google.com/file/d/1LEi-hNITj66ptuDHtRcAZ
 
   <div className="space-y-4">
     <StaticWideBanner src={BANNER_1} alt="Banner 1" />
-    <StaticWideBanner src={BANNER_2} alt="Banner 2" />
+    {/* <StaticWideBanner src={BANNER_2} alt="Banner 2" /> */}
 
     <StaticBannerGrid
       images={BANNERS_3}
@@ -741,6 +741,7 @@ function StaticBannerGrid({ images, altPrefix = "Banner", ratio = 1 }) {
     </div>
   );
 }
+
 
 
 
