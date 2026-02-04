@@ -105,7 +105,9 @@ export default function Hero() {
                         <p className="mt-4 text-base text-white/85 md:text-lg">
                             {t("hero.description")}
                         </p>
-
+                        <p className="mt-4 text-base text-white/85 md:text-lg">
+                            {t("hero.badge")}
+                        </p>
                         <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                             <button
                                 onClick={() => navigate("/menu")}
@@ -143,3 +145,4 @@ export default function Hero() {
         </section>
     );
 }
+
