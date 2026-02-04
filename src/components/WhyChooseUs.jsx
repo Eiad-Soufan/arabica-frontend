@@ -95,7 +95,8 @@ function Feature({ icon, title, text, index }) {
 }
 
 export default function WhyChooseUs() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
+
   const lang = i18n.language?.startsWith("ar")
     ? "ar"
     : i18n.language?.startsWith("ms")
@@ -132,6 +133,7 @@ export default function WhyChooseUs() {
     </section>
   );
 }
+
 
 
 
