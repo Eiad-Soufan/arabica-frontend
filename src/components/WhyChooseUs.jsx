@@ -72,11 +72,11 @@ function Feature({ icon, title, text, index }) {
       className="flex flex-col items-center text-center rounded-2xl bg-white/8 p-8 ring-1 ring-white/12 backdrop-blur-glass"
     >
       {/* Icon */}
-      <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-2xl bg-arabica-aqua/15 ring-1 ring-arabica-aqua/30">
+      <div className="mb-6 flex h-32 w-32 items-center justify-center rounded-2xl bg-arabica-aqua/15">
         <img
           src={icon}
           alt={title}
-          className="h-14 w-14 object-contain"
+          className="h-20 w-20 object-contain"
           loading="lazy"
         />
       </div>
@@ -130,3 +130,4 @@ export default function WhyChooseUs() {
     </section>
   );
 }
+
