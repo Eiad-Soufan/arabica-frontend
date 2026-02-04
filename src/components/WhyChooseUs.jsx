@@ -69,7 +69,7 @@ function Feature({ icon, title, text, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55, ease: "easeOut", delay: index * 0.08 }}
       viewport={{ once: false, amount: 0.35 }}
-      className="flex flex-col items-center text-center rounded-2xl bg-white/8 p-8 ring-1 ring-white/12 backdrop-blur-glass"
+      className="flex flex-col items-center text-center rounded-2xl bg-white/8 p-8 backdrop-blur-glass"
     >
       {/* Icon */}
       <div className="mb-6 flex h-32 w-32 items-center justify-center rounded-2xl bg-arabica-aqua/15">
@@ -130,4 +130,5 @@ export default function WhyChooseUs() {
     </section>
   );
 }
+
 
