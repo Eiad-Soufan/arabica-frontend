@@ -1,7 +1,13 @@
 {
   "brand": "Arabica",
 "nav": { "home": "Utama", "menu": "Menu", "promotions": "Promosi", "gallery": "Galeri", "contact": "Hubungi" },
-  "hero": { "description": "Pengalaman menjamu selera Arab moden yang menggabungkan rasa autentik, suasana elegan, dan menu yang terasa seperti di rumah.","badge": "Restoran Arab • Pengalaman Premium", "title": "Rasai Keaslian Arabica.", "cta1": "Lihat Menu", "cta2": "Lihat Promosi" },
+ "hero": {
+  "description": "Hidangan Arab Yaman dan Syria yang paling lazat",
+  "badge": "Nasi • Salad • Grill • Shawarma • Pembuka Selera",
+  "title": "Rasa Arab Asli Seperti Seharusnya",
+  "cta1": "Lihat Menu",
+  "cta2": "Lihat Promosi"
+},
     "about": {
     "title": "Tentang Kami",
     "headline": "Masakan Arab asli dengan sentuhan moden",
@@ -126,4 +132,5 @@
 
 
 }
+
 
