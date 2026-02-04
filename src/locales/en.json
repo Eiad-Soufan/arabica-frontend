@@ -1,7 +1,14 @@
 {
   "brand": "Arabica",
 "nav": { "home": "Home", "menu": "Menu", "promotions": "Promotions", "gallery": "Gallery", "contact": "Contact" },
-  "hero": { "description": "A modern Arabic dining experience blending authentic flavors, refined ambiance, and a menu that feels like home.","badge": "Arabic Restaurant • Premium Experience", "title": "Taste the Authentic Arabica.", "cta1": "Explore Menu", "cta2": "View Promotions" },
+"hero": {
+  "description": "The finest Yemeni and Syrian Arabic cuisine",
+  "badge": "Rice • Salads • Grills • Shawarma • Appetizers",
+  "title": "Arabic Flavour as It Should Be",
+  "cta1": "Explore Menu",
+  "cta2": "View Offers"
+},
+
   "about": {
     "title": "About Us",
     "headline": "Authentic Arabic cuisine with a modern soul",
@@ -130,4 +137,5 @@
 
 
 }
+
 
