@@ -110,7 +110,9 @@ export default function WhyChooseUs() {
       className="relative overflow-hidden bg-arabica-deep py-20"
     >
       <div className="mx-auto max-w-6xl px-4">
-
+  <span className="inline-block rounded-full bg-white/10 px-4 py-2 text-sm text-white/80 ring-1 ring-white/15">
+    {t("why.title")}
+  </span>
         {/* Grid */}
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
           {items.map((item, index) => (
@@ -130,5 +132,6 @@ export default function WhyChooseUs() {
     </section>
   );
 }
+
 
 
