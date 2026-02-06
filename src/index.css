@@ -41,7 +41,7 @@
 }
 
 :root{
-  --arabica-brown: 0 0 0;   /* :contentReference[oaicite:6]{index=6} */
+  --arabica-brown: 87 61 31;   /* :contentReference[oaicite:6]{index=6} */
   --arabica-deep: 42 12 6;    /* :contentReference[oaicite:7]{index=7} */
   --arabica-aqua: 113 190 202; /* :contentReference[oaicite:8]{index=8} */
 }
